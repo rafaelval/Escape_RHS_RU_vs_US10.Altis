@@ -22,9 +22,9 @@ _searchAreaMarkerName = param [1,grpNull];
 _firstPos = param [2,[0,0,0]];
 _debug = param [3,false];
 
-_subAreaSearchTimeSec = 180; // How long time the search group will search the area where enemy was last seen
-_subAreaSize = 100; // Size (width and height) of the sub area
-_stationaryMaxTimeSec = 60; // If the leader in the group is stationary more than this time, a new target position will be choosen (so that the group never gets stuck)
+_subAreaSearchTimeSec = 120; // How long time the search group will search the area where enemy was last seen
+_subAreaSize = 500; // Size (width and height) of the sub area
+_stationaryMaxTimeSec = 20; // If the leader in the group is stationary more than this time, a new target position will be choosen (so that the group never gets stuck)
 _defaultSearchAreaMarkerName = _searchAreaMarkerName;
 
 waitUntil {!isNil "a3e_var_commonLibInitialized"};
