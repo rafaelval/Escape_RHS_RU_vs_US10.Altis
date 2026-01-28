@@ -17,7 +17,7 @@ if (!_active) then {
 	private _area = [_zone,"zoneArea"] call BIS_fnc_getFromPairs;
 
 	// ================= CONFIGURACIÓN =================
-	private _maxPatrolsPerZone = 3; // ← MUY IMPORTANTE
+	private _maxPatrolsPerZone = 2; // ← MUY IMPORTANTE
 	// =================================================
 
 	if (!_initialized) then {

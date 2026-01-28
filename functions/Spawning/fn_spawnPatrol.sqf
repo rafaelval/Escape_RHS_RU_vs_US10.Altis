@@ -1,9 +1,9 @@
 params ["_pos","_side","_count"];
 
 // ================= CONFIGURACIÓN =================
-private _maxGroupSize = 6;        // Máximo de soldados por patrulla
-private _minGroupSize = 4;        // Mínimo para que no sean inútiles
-private _maxActiveGroups = 4;     // Máximo de grupos activos globales
+private _maxGroupSize = 4;        // Máximo de soldados por patrulla
+private _minGroupSize = 2;        // Mínimo para que no sean inútiles
+private _maxActiveGroups = 3;     // Máximo de grupos activos globales
 // =================================================
 
 // Inicializar contador global si no existe
