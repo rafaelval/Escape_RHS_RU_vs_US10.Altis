@@ -32,17 +32,30 @@ if (isServer) then {
 	_backpack setPosATL _pos;
 
 	// 📦 Caja con uniformes agregada al punto de inicio
-	_pos = [_center, _center vectorAdd [1.5, 1.5, 0], _rotation] call A3E_fnc_rotatePosition;
-	_obj = "Box_NATO_Equip_F" createVehicle _pos;
-	_obj setDir ((getDir _obj) + _rotation);
-	_obj setPosATL _pos;
-	clearItemCargoGlobal _obj;
-	clearWeaponCargoGlobal _obj;
-	clearMagazineCargoGlobal _obj;
-	clearBackpackCargoGlobal _obj;
-	_obj addItemCargoGlobal ["U_B_CTRG_Soldier_Arid_F", 10];
-	_obj addWeaponCargoGlobal ["rhsusf_weap_m1911a1", 4];
-	_obj addMagazineCargoGlobal ["rhsusf_mag_7x45acp_MHP", 12];
+_pos = [_center, _center vectorAdd [1.5, 1.5, 0], _rotation] call A3E_fnc_rotatePosition;
+// Crear un poco más alta para evitar enterrado
+private _spawnPos = _pos vectorAdd [0, 0, 0.25];
+_obj = "Box_NATO_Equip_F" createVehicle _spawnPos;
+_obj setDir ((getDir _obj) + _rotation);
+// Posición y orientación segura
+_obj setPosATL _spawnPos;
+_obj setVectorUp [0,0,1];
+// Evitar que se rompa por física al spawnear
+_obj allowDamage false;
+// Limpiar inventario
+clearItemCargoGlobal _obj;
+clearWeaponCargoGlobal _obj;
+clearMagazineCargoGlobal _obj;
+clearBackpackCargoGlobal _obj;
+
+_obj addItemCargoGlobal ["U_B_CTRG_Soldier_Arid_F", 10];
+_obj addWeaponCargoGlobal ["rhsusf_weap_m1911a1", 4];
+_obj addMagazineCargoGlobal ["rhsusf_mag_7x45acp_MHP", 12];
+_obj addItemCargoGlobal ["ACE_Fortify", 4];
+// Reactivar daño tras unos segundos (opcional pero recomendado)
+[_obj] spawn {
+	sleep 5;
+	_this allowDamage true;
 };
 
 // Stuff that can be local and is created duplicated on each client. This reduces network traffic at start.
